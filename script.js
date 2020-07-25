@@ -23,10 +23,40 @@ function drawBoard() {
 
 drawBoard();
 
-const grid = [{pos0: 0}, {pos1: 30}, {pos2: 60}, {pos3: 90}, {pos4: 120}, {pos5: 150}, {pos6: 180}, {pos7: 210}];
+const grid = [
+    {position: 0},
+    {position: 30},
+    {position: 60},
+    {position: 90},
+    {position: 120},
+    {position: 150},
+    {position: 180},
+    {position: 210},
+];
+
+function roundedCoordinats(exactCoord) {
+    if (exactCoord < grid[1].position) {
+        return grid[0].position;
+    } else if (exactCoord < grid[2].position) {
+        return grid[1].position;
+    } else if (exactCoord < grid[3].position) {
+        return grid[2].position;
+    } else if (exactCoord < grid[4].position) {
+        return grid[3].position;
+    } else if (exactCoord < grid[5].position) {
+        return grid[4].position;
+    } else if (exactCoord < grid[6].position) {
+        return grid[5].position;
+    } else if (exactCoord < grid[7].position) {
+        return grid[6].position;
+    } else {
+        return grid[7].position;
+    }
+}
 
 canvas.onclick = function getCoordinats() {
     let coordX = event.offsetX;
     let coordY = event.offsetY;
+    console.log(roundedCoordinats(coordX));
 }
 
