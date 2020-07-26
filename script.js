@@ -54,9 +54,34 @@ function roundedCoordinats(exactCoord) {
     }
 }
 
-canvas.onclick = function getCoordinats() {
+canvas.onclick = function drawHorses() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawBoard();
+
     let coordX = event.offsetX;
     let coordY = event.offsetY;
-    console.log(roundedCoordinats(coordX));
+    let roundedCoordX = roundedCoordinats(coordX);
+    let roundedCoordY = roundedCoordinats(coordY);
+
+    let chess = new Image();
+    chess.src = "images/chess.png";
+    chess.onload = function () {
+        ctx.drawImage(chess, roundedCoordX, roundedCoordY, 30, 30)
+    }
+
+    let chessMove = new Image();
+    chessMove.src = "images/chess-move.png";
+    chessMove.onload = function () {
+        ctx.drawImage(chessMove, roundedCoordX - 60, roundedCoordY - 30, 30, 30);
+        ctx.drawImage(chessMove, roundedCoordX - 30, roundedCoordY - 60, 30, 30);
+        ctx.drawImage(chessMove, roundedCoordX + 60, roundedCoordY - 30, 30, 30);
+        ctx.drawImage(chessMove, roundedCoordX + 30, roundedCoordY - 60, 30, 30);
+        ctx.drawImage(chessMove, roundedCoordX - 60, roundedCoordY + 30, 30, 30);
+        ctx.drawImage(chessMove, roundedCoordX - 30, roundedCoordY + 60, 30, 30);
+        ctx.drawImage(chessMove, roundedCoordX + 60, roundedCoordY + 30, 30, 30);
+        ctx.drawImage(chessMove, roundedCoordX + 30, roundedCoordY + 60, 30, 30);
+    }
 }
+
+
 
